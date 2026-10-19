@@ -65,8 +65,10 @@ class _PlayerScreenState extends State<PlayerScreen> {
 
   void _seekRelative(Duration delta) {
     final s = _engine.currentState;
-    if (!s.canSeek) return;
-    final target = (s.position + delta).clamp(Duration.zero, s.duration!);
+    if (!s.canSeek || s.duration == null) return;
+    var target = s.position + delta;
+    if (target < Duration.zero) target = Duration.zero;
+    if (target > s.duration!) target = s.duration!;
     _engine.seekTo(target);
     _showControls();
   }

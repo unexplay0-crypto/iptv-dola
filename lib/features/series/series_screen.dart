@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation_helper.dart';
 import '../../data/models/media_entry.dart';
+import '../../data/models/media_type.dart';
 import '../../data/models/series_models.dart';
 import '../../state/providers.dart';
 import '../widgets/media_card.dart';

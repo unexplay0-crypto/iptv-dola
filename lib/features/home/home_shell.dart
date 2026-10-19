@@ -54,7 +54,11 @@ class HomeShell extends StatelessWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex.clamp(0, _items.length - 1),
+        selectedIndex: selectedIndex < 0
+            ? 0
+            : (selectedIndex >= _items.length
+                ? _items.length - 1
+                : selectedIndex),
         onDestinationSelected: (i) => context.go(_items[i].location),
         destinations: _items
             .map((e) => NavigationDestination(icon: Icon(e.icon), label: e.label))
